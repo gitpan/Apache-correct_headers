@@ -1,0 +1,49 @@
+1999-04-11  Andreas J. Koenig  <andreas.koenig@anima.de>
+
+	* Improved the query-unmask handler to work with escaped requests
+	from non-compliant pre-1.1 proxies.
+
+	* Added the amazon link to the references.
+
+1999-04-07  Andreas J. Koenig  <andreas.koenig@anima.de>
+
+	* Added Eric Cholet's recipe how to disable caching in the major
+	browsers which tend to have broken behaviour.
+
+	* Added this ChangeLog and Makefile.PL to make the document a
+	standalone distribution until it settles and becomes stable.
+ 
+	* Added description of no_cache() by Frank Cringle.
+
+	* Added note about Content-Type being sent anyway by Frank
+	Cringle.
+
+	* Added "Avoiding" chapter written by Frank Cringle
+
+1999-04-06  Andreas J. Koenig  <andreas.koenig@anima.de>
+
+	* Made a few stylistic changes suggested by Tom Hukins.
+
+	* Removed the wrong comment about the speed of the time utilities.
+
+	* Changed several citations that were taken from RFC 2068, because
+	they changed in the current draft.
+
+	* Changed the reference to HTTP/1.1 as Wham Bang pointed out to me
+	that there is a draft "06" that replaces the RFC.
+
+1999-04-05  Andreas J. Koenig  <andreas.koenig@anima.de>
+	
+	* Changed the code examples to use Apache::File where appropriate
+
+	* Added Cache-Control max-age
+
+	* added a long chapter on ETag
+
+	* added a comment about "?" in requests and a handler to work around
+
+	* lots of small additions
+
+1999-03-30  Andreas J. Koenig  <andreas.koenig@anima.de>
+
+	* First version posted as mail to the mod_perl mailing list

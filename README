@@ -1,0 +1,18 @@
+This distribution contains an introcuction/guide/tutorial to HTTP/1.1
+header writing for mod_perl users. It will probably end up in the
+mod_perl distribution, but as long as it is in flux, it's probably
+better to have it as a standalone distribution file.
+
+There's no code contained in the distribution. The guide can be
+installed like the manpage of a perl module by running
+
+    perl Makefile.PL
+    make install
+
+You can read the document then with
+
+    man Apache::correct_headers
+
+Enjoy,
+andreas koenig
+
