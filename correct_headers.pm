@@ -1,6 +1,6 @@
 package Apache::correct_headers;
 
-$VERSION = sprintf "%d.%02d", q$Revision: 1.15 $ =~ /(\d+).(\d+)/;
+$VERSION = sprintf "%d.%02d", q$Revision: 1.16 $ =~ /(\d+).(\d+)/;
 
 __END__
 
@@ -115,7 +115,7 @@ update_mtime() with this argument first.
   use Date::Parse;
   # Date::Parse parses RCS format, Apache::Util::parsedate doesn't
   $Mtime ||=
-    Date::Parse::str2time(substr q$Date: 1999/04/11 14:54:56 $, 6);
+    Date::Parse::str2time(substr q$Date: 1999/08/14 06:21:32 $, 6);
   $r->set_last_modified($Mtime);
 
 =head2 2.1.3) Expires and Cache-Control
@@ -427,13 +427,20 @@ circumstances it may not be allowed to do so.
 
 =head2 3.2) POST
 
-The response to a POST request is not cachable. Period.
+The response to a POST request is not cachable due to an
+underspecification in the HTTP standards. Section 13.4 does not forbid
+caching of responses to POST request but no other part of the HTTP
+standard explains how caching of POST requests could be implemented,
+so we are in a vacuum here and all existing caching servers therefore
+refuse to implement caching of POST requests. This may change if
+somebody does the footwork of defining the semantics for cache
+operations on POST. Note that some browsers with their more aggressive
+caching do implement caching of POST requests.
 
-Note: If you are running a squid accelerator, you should know
-that it accelerates outgoing traffic, but does not bundle
-incoming traffic, so if you have long post requests, the squid
-doesn't buy you anything. So always consider to use a GET
-instead of a POST if possible.
+Note: If you are running a squid accelerator, you should be aware that
+it accelerates outgoing traffic, but does not bundle incoming traffic,
+so if you have long post requests, the squid doesn't buy you anything.
+So always consider to use a GET instead of a POST if possible.
 
 =head2 3.3) GET
 
@@ -577,9 +584,8 @@ out of date finfo when generating the response header.
  [2] T. Berners-Lee et al.: Hypertext Transfer Protocol --
      HTTP/1.0, RFC 1945.
 
- [3] R. Fielding et al.: Hypertext Transfer Protocol, HTTP/1.1,
-     draft-ietf-http-v11-spec-rev-06. This draft is supposed to
-     replace RFC 2068.
+ [3] R. Fielding et al.: Hypertext Transfer Protocol -- HTTP/1.1, RFC
+     2616.
 
  [4] Martin Hamilton: Cachebusting - cause and prevention,
      draft-hamilton-cachebusting-01. Also available online at
@@ -592,8 +598,8 @@ out of date finfo when generating the response header.
 
 =head1 VERSION
 
-You're reading revision $Revision: 1.15 $ of this document,
-written on $Date: 1999/04/11 14:54:56 $
+You're reading revision $Revision: 1.16 $ of this document,
+written on $Date: 1999/08/14 06:21:32 $
 
 =head1 AUTHOR
 
